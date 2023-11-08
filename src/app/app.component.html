@@ -1,0 +1,54 @@
+<main class="main">
+  <div *ngIf="!isCardSelected" class="main__page">
+    <div *ngIf="points.length !=0" class="main__content content">
+      <h1 class="content__h1">SpaceX Ships</h1>
+      <div *ngFor="let point of getPointListByStage(currentStage)">
+        <app-point [changeSelectedCard]="changeSelectedCard" [point]="point"></app-point>
+      </div>
+      <div *ngIf="filterPoints.length != 0" class="content__page page">
+        <svg (click)="changeCurrentStage(false)" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path *ngIf="currentStage > 0" fill-rule="evenodd" clip-rule="evenodd" d="M15.41 7.41L14 6L8 12L14 18L15.41 16.59L10.83 12L15.41 7.41Z"  fill="#347CFF"/>
+            <path *ngIf="currentStage === 0" fill-rule="evenodd" clip-rule="evenodd" d="M15.41 7.41L14 6L8 12L14 18L15.41 16.59L10.83 12L15.41 7.41Z"  fill="#3C474C"/>
+        </svg>  
+        <span class="page__number">{{currentStage + 1}}</span>   
+        <svg (click)="changeCurrentStage(true)" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path *ngIf="(currentStage + 1)*5 <= filterPoints.length" fill-rule="evenodd" clip-rule="evenodd" d="M8.59 16.59L10 18L16 12L10 6L8.59 7.41L13.17 12L8.59 16.59Z" fill="#347CFF"/>
+          <path *ngIf="(currentStage + 1)*5 > filterPoints.length" fill-rule="evenodd" clip-rule="evenodd" d="M8.59 16.59L10 18L16 12L10 6L8.59 7.41L13.17 12L8.59 16.59Z"  fill="#3C474C"/>
+        </svg>               
+      </div>
+    </div>
+    <div *ngIf="points.length == 0" class="filters__loader"></div>
+    <div class="filters">
+      <app-filters *ngIf="points.length !=0"
+      [changeSelectedCard]="changeSelectedCard" 
+      [getVariants]="getFilterTitles" 
+      [variants]="variants" 
+      [checkboxes]="getCheckBoxes()" 
+      [radiobuttons]="getRadiobuttons()" 
+      [changeAttribute]="changeAttribute">
+      </app-filters>
+    </div>
+  </div>
+  <div *ngIf="isCardSelected" class="main__content selectedCard">
+    <div (click)="isCardSelected = false" class="selectedCard__returnBlock">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.6667 6.41665L4.5675 6.41665L7.82834 3.15581L7 2.33331L2.33334 6.99998L7 11.6666L7.8225 10.8441L4.5675 7.58331L11.6667 7.58331V6.41665Z" fill="#2962FF"/>
+      </svg>
+      <span class="selectedCard__text">Вернуться</span>
+    </div>
+    <h1 class="selectedCard__h1">{{selectedCard.name}}</h1>
+    <div class="selectedCard__content">
+      <div class="selectedCard__attributes">
+        <div *ngFor="let attribute of getSelectedCardAttributes() | keyvalue" class="selectedCard__attribute">
+          <p class="selectedCard__key">{{attribute.key}}</p>
+          <p class="selectedCard__value">{{attribute.value}}</p>
+        </div>
+      </div>
+      <div>
+        <h2 class="selectedCard__h2">Roles</h2>
+        <p class="selectedCard__info">{{selectedCard.roles.join(', ')}}</p>
+      </div>
+    </div>
+  </div>
+</main>
+

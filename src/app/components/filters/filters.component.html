@@ -1,0 +1,11 @@
+<h2 class="filters__h2">Фильтры</h2>
+<div class="filters__search">
+  <input type="text" class="filters__input search" (input)="changeInput($event)" placeholder="Название">
+  <div *ngIf="variants.length!=0" class="search__variants">
+    <div class="search__content">
+      <p (click)="changeSelectedCard(value.id)" *ngFor="let value of variants" class="search__text">{{value.value}}</p>
+    </div>
+  </div>
+</div>
+<filter-checkbox [checkBoxList]="checkboxes" [changeActive]="changeAttribute"></filter-checkbox>
+<filter-radioButton [radiobuttonList]="radiobuttons" [changeActive]="changeAttribute"></filter-radioButton>

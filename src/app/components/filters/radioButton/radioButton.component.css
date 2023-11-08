@@ -1,0 +1,26 @@
+.radiobutton__title{
+  color: var(--black-full-color);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 23px;
+}
+
+.radiobutton__content{
+  display: flex;
+  align-items: center;
+}
+
+.radiobutton__content:not(:last-child){
+  margin-bottom: 15px;
+}
+
+.radiobutton__value{
+  color: var(--main-black-color);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-left: 24px;
+}

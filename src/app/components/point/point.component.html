@@ -1,0 +1,14 @@
+<div class="point">
+  <div class="point__header">
+    <h2 class="point__h2">{{point.title}}</h2>
+    <svg (click)="changeSelectedCard(point.id)" class="point__link" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M4 13L16.17 13L10.58 18.59L12 20L20 12L12 4L10.59 5.41L16.17 11L4 11L4 13Z" fill="#2962FF"/>
+    </svg>
+  </div>
+  <div class="point__content">
+    <div class="point__container" *ngFor="let attribute of point.attributes">
+      <span class="point__title">{{attribute.key}}</span>
+      <span class="point__value">{{attribute.value}}</span>
+    </div>
+  </div>
+</div>
