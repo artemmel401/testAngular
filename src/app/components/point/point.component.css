@@ -28,7 +28,7 @@
 
 .point__content{
   padding-bottom: 30px;
-  border-bottom: 1px solid var(--grey-color);
+  border-bottom: 1px solid var(--gray-color);
   display: flex;
 }
 

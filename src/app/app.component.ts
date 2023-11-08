@@ -65,10 +65,7 @@ export class AppComponent {
   }
 
   getPointListByStage = (stage: number) =>{
-    console.log(this.filterPoints)
-    console.log(stage === 0 ? 0 : (5 * stage), stage === 0 ? 5 : (5 * stage + 5))
     let newPointList = this.filterPoints.slice(stage === 0 ? 0 : (5 * stage), stage === 0 ? 5 : (5 * stage + 5))
-    console.log(newPointList)
     return newPointList
   }
   getSelectedCardAttributes() {
@@ -86,11 +83,12 @@ export class AppComponent {
     if (isNext && (this.currentStage + 1)*5 <= this.filterPoints.length){ 
       this.currentStage+=1
     }
-    else if(this.currentStage > 0){
+    else if(this.currentStage > 0 && !isNext){
       this.currentStage-=1
     }
   }
   changeAttribute = (name:string, attribute:string):void =>{
+    this.currentStage = 0
     let result: IPointFront[] = []
     for (let point in this.points){
       if (attribute=== 'radiobutton'){
@@ -122,8 +120,6 @@ export class AppComponent {
     for (let point in (this.fullPoints as IFullPoint[])){
       if ((this.fullPoints as IFullPoint[])[point].id === id){
         this.selectedCard = (this.fullPoints as IFullPoint[])[point]
-        console.log(this.selectedCard)
-
       }
     }
   }

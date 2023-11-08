@@ -10,6 +10,7 @@
 .radiobutton__content{
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .radiobutton__content:not(:last-child){

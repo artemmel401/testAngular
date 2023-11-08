@@ -6,12 +6,12 @@
         <app-point [changeSelectedCard]="changeSelectedCard" [point]="point"></app-point>
       </div>
       <div *ngIf="filterPoints.length != 0" class="content__page page">
-        <svg (click)="changeCurrentStage(false)" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="page__svg" (click)="changeCurrentStage(false)" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path *ngIf="currentStage > 0" fill-rule="evenodd" clip-rule="evenodd" d="M15.41 7.41L14 6L8 12L14 18L15.41 16.59L10.83 12L15.41 7.41Z"  fill="#347CFF"/>
             <path *ngIf="currentStage === 0" fill-rule="evenodd" clip-rule="evenodd" d="M15.41 7.41L14 6L8 12L14 18L15.41 16.59L10.83 12L15.41 7.41Z"  fill="#3C474C"/>
         </svg>  
         <span class="page__number">{{currentStage + 1}}</span>   
-        <svg (click)="changeCurrentStage(true)" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="page__svg" (click)="changeCurrentStage(true)" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path *ngIf="(currentStage + 1)*5 <= filterPoints.length" fill-rule="evenodd" clip-rule="evenodd" d="M8.59 16.59L10 18L16 12L10 6L8.59 7.41L13.17 12L8.59 16.59Z" fill="#347CFF"/>
           <path *ngIf="(currentStage + 1)*5 > filterPoints.length" fill-rule="evenodd" clip-rule="evenodd" d="M8.59 16.59L10 18L16 12L10 6L8.59 7.41L13.17 12L8.59 16.59Z"  fill="#3C474C"/>
         </svg>               

@@ -8,6 +8,7 @@
   padding-top: 52px;
   padding-left: 63px;
   padding-right: 65px;
+  padding-bottom: 162px;
   width: 75%;
 }
 
@@ -23,6 +24,10 @@
 .content__page{
   display: flex;
   align-items: center;
+}
+
+.page__svg{
+  cursor: pointer;
 }
 
 .page__number{
